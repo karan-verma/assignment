@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Navigation Menu</title>
+<link type="text/css" rel="stylesheet" href="styles.css">
+<script src="jquery-1.11.2.js"></script> 
+<script>
+function loadXMLDoc()
+{
+var xmlhttp;
+var txt,x,i;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function func()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    xmlDoc=xmlhttp.responseXML;
+    txt="";
+    x=xmlDoc.getElementsByTagName("ARTIST");
+    for (i=0;i<x.length;i++)
+      {
+      txt=txt + x[i].childNodes[0].nodeValue + "<br>";
+      }
+    document.getElementById("myDiv").innerHTML=txt;
+    }
+  }
+xmlhttp.open("GET","cd_catalog.xml",true);
+xmlhttp.send();
+}
+</script>
+
+<head>
+<body>
+
+<center>
+<div id="navbar">
+  
+  <div id="holder"> 
+
+  <ul> 
+
+   <li><a href="#" id="onlink">Home</a></li>
+   <li><a href="#">Products</a></li>
+   <li><a href="#">Services</a></li>
+   <li><a href="#">Gallery</a></li>
+   <li><a href="#">Contact</a></li>
+
+  </ul> 
+
+  </div> 
+
+ </div>
+
+
+<script type="text/javascript" src="jssor.js"></script>
+    <script type="text/javascript" src="jssor.slider.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var options = {
+                $AutoPlay: true,                                   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $DragOrientation: 1                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+            };
+            var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+        });
+    </script>
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px;
+        height: 300px;">
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 300px;
+            overflow: hidden;">
+            <div><img u="image" src="1.jpg" /></div>
+            <div><img u="image" src="2.jpg" /></div>
+            <div><img u="image" src="3.jpg" /></div>
+
+        </div>
+        
+    </div><br>
+	
+<!--	<button onclick="loadXMLDoc()">Click</button>    -->
+<div id="myDiv"></div>
+	
+
+</center>
+ <footer id="footer">
+  <p>Made by:Karan Verma</p>
+  <p>Contact information:9962620038
+  <a href="mailto:rockinkaran@yahoo.com">
+  Mail me</a>.</p>
+</footer>
+ </body>
+ </html>
